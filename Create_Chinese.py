@@ -148,13 +148,13 @@ class Create:
     def getGB2312(self):
 
         while 1:
-            self.tail = self.tail + 1
+            self.tail += 1
             if self.tail > 0xF:
                 self.tail = 0
-                self.body = self.body + 1
+                self.body += 1
             if self.body > 0xF:
                 self.body = 0xA
-                self.head = self.head + 1
+                self.head += 1
             if self.head > 0xF7:
                 exit(0)
             if not ((self.body == 0xF) and (self.tail == 0xF)):
@@ -162,18 +162,9 @@ class Create:
                     if not ((self.head == 0xD7) and (self.body == 0xF) and (self.tail > 0x9)):
                         break
 
-        # save head,body,tail
-        ###################
-
-
-        ###################
-
         val = (self.head << 8) | (self.body << 4) | self.tail
-        # print val
         str = "%x" % val
-        # print str ###
         char = str.decode('hex').decode('gb2312')
-        # print char ###
         return char
 
     def drawLine(self, Im):

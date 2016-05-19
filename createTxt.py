@@ -1,36 +1,35 @@
 import os
 from os import listdir
 
-def create(folder, charNum, kinds, flag):
-    charNum = charNum * 4
-    trainDataSet = []
-    valDataSet = []
-    foldername = listdir(folder)
-    for folders in foldername:
+
+def create(folder, char_num, kinds, flag):
+    char_num *= 4
+    train_data_set = []
+    val_data_set = []
+    folder_name = listdir(folder)
+    for folders in folder_name:
         if folders == '.DS_Store':
             continue
-        filename = listdir(folder + '/'+ folders)
-        n = len(filename)
-        for filenum in range(int(charNum/6*5.0)):
-            if filename[filenum] == '.DS_Store':
+        file_name = listdir(folder + '/'+ folders)
+        count = 0
+        for files in file_name:
+            if files == '.DS_Store':
                 continue
-            Path_Label=[]
-            Path_Label.extend(['/' + folders + '/' + filename[filenum] + ' ' + labelcode(folders) + '\n'])
-            trainDataSet.extend(Path_Label)
+            path_label = []
+            path_label.extend(['/' + folders + '/' + files + ' ' + label_code(folders) + '\n'])
 
-        for filenum in range(int(charNum/6*5.0),charNum):
-            if filename[filenum] == '.DS_Store':
-                continue
-            Path_Label = []
-            Path_Label.extend(['/' + folders + '/' + filename[filenum] + ' ' + labelcode(folders) + '\n'])
-            valDataSet.extend(Path_Label)
+            if count < char_num / 6 * 5.0:
+                train_data_set.extend(path_label)
+                count += 1
+            else:
+                val_data_set.extend(path_label)
 
-    storeSet(trainDataSet,'train_' + str(kinds) + '_' + str(charNum) + '_' + flag + '.txt')
-    storeSet(valDataSet,'train_' + str(kinds) + '_' + str(charNum) + '_' + flag + '.txt')
+    store_set(train_data_set, 'train_' + str(kinds) + '_' + str(char_num) + '_' + flag + '.txt')
+    store_set(val_data_set, 'val_' + str(kinds) + '_' + str(char_num) + '_' + flag + '.txt')
 
 
-def labelcode(foldername):
-    code = int(foldername)
+def label_code(folder_name):
+    code = int(folder_name)
     if code < 10:
         name = '000' + str(code)
         return name
@@ -44,7 +43,7 @@ def labelcode(foldername):
         return str(code)
 
 
-def storeSet(inputSet,filename):
-    fw = open(filename,'w')
-    fw.writelines(inputSet)
+def store_set(input_set, file_name):
+    fw = open(file_name, 'w')
+    fw.writelines(input_set)
     fw.close()
