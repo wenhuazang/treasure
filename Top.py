@@ -1,4 +1,4 @@
 from Create_Chinese import Create
 
 create = Create()
-create.creatCharSet(10, 12, 'DATA')
+create.creatCharSet(20, 3600, 'DATA')
