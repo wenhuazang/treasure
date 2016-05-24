@@ -1,5 +1,6 @@
 #!coding=utf-8
-import Image, ImageFont, ImageDraw, ImageFilter, time
+import ImageFont, ImageDraw, ImageFilter, time
+from PIL import Image
 import os
 import pylab
 
@@ -44,9 +45,9 @@ def segment(im):
     return regions
 
 
-def getframe(fname, strict=1):
+def getframe(fname):
     try:
-        im = Image.open(fname)
+        im = Image.open(fname,'r')
     except:
         return "File error!"
     im = im.convert('L')
@@ -76,12 +77,14 @@ if __name__ == "__main__":
     i = -1
     print "load samples..."
     for name in images:
+        if name == '.DS_Store':
+            continue
         a = 0
         i += 1
         img = getframe(img_root + name)
         regions = segment(img)
         for region in regions:
-            region.save(img_save+str(4*i+a)+".jpg")
+            region.save(img_save+str(4*i+a)+".png")
             a += 1
     end = time.time()
     print "elapse: %f" % (end - start)
