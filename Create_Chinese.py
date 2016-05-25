@@ -100,7 +100,7 @@ class Create:
                 # pinyinIndex=random.randint(0, 3)
                 for k in range(0, num):
 
-                    fontIndex = random.randint(0, 1)
+                    fontIndex = 1
 
                     # if k==pinyinIndex:
                     imgchr = self.imageChar.creatPinyin(letter, self.fontSet[fontIndex], self.fontSize)
@@ -238,6 +238,3 @@ class ImageChar:
 
         def getChar(self):
             return self.char
-
-        def save(self, img, path):
-            img.save(path)
