@@ -12,7 +12,7 @@ class Create:
     def __init__(self):
         self.upperSize = (145, 40)
         self.fontSet = ['simsun.ttc', 'hwzs.ttf']
-        self.fontSize = 23
+        self.fontSize = 25
         self.bgColor = (255, 255, 255)
         self.upperPart = Image.new('RGB', self.upperSize, self.bgColor)
         self.imageChar = ImageChar()
@@ -30,7 +30,7 @@ class Create:
         start = 10
         letterarray = ['a', 'a', 'a', 'a']
         NumOfChar = 0
-        charNum = charNum / 4
+        charNum /= 4
 
         if not os.path.exists(folder):
             os.makedirs(folder)
@@ -47,7 +47,7 @@ class Create:
                 self.upperPart = Image.new('RGB', self.upperSize, self.bgColor)
                 for k in range(0, num):
 
-                    fontIndex = random.randint(0, 1)
+                    fontIndex = random.randint(0, 2)
 
                     imgchr = self.imageChar.creatChar(letter, self.fontSet[fontIndex], self.fontSize)
                     char = self.imageChar.getChar()
