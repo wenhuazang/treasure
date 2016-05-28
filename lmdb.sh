@@ -3,19 +3,19 @@
 #----------------------------------------------------------------------------------------- 
 
 #保存生成的lmdb的目录
-EXAMPLE=/home/zhangmingjie/deep-learning/zmj/lmdb5
+EXAMPLE=/Users/zhangmingjie/Documents/lmdb/lmdb1/
 
 #train.txt和val.txt所在的目录
-DATA=/home/zhangmingjie/deep-learning/zmj
+DATA=/Users/zhangmingjie/Documents/Github/treasure/simplized/
 
 #转换图片的工具所在的目录
-TOOLS=/home/zhangmingjie/deep-learning/caffe-master/build/tools
+TOOLS=/Users/zhangmingjie/Documents/caffe/build/tools
 
 
 #图片所在的目录
-TRAIN_DATA_ROOT=/home/zhangmingjie/deep-learning/zmj/image5
+TRAIN_DATA_ROOT=/Users/zhangmingjie/Documents/Github/treasure/simplized/DATA/
 
-VAL_DATA_ROOT=/home/zhangmingjie/deep-learning/zmj/image5
+VAL_DATA_ROOT=/Users/zhangmingjie/Documents/Github/treasure/simplized/DATA/
 
 # 设置 RESIZE=true 可以把图片resize成想要的尺寸。
 RESIZE=true
