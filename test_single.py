@@ -4,11 +4,9 @@ import os
 import numpy as np
 import time
 
-
 model_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet.prototxt'
 pretrained_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet1/_iter_30000.caffemodel'
 net = caffe.Classifier(model_file, pretrained_file, image_dims=(28, 28), raw_scale=255)
-
 
 if __name__ == '__main__':
     start = time.time()
@@ -24,8 +22,8 @@ if __name__ == '__main__':
     print score[0]
     for j in range(20):
         if score[0][j] == max_num:
-             get = j
-             break
-    print 'This char is '+ ': ' + str(get)
+            get = j
+            break
+    print 'This char is ' + ': ' + str(get)
 
     #####################################################################
