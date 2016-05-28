@@ -1,19 +1,21 @@
 # coding=utf-8
+import sys
+sys.path.append('/Users/zhangmingjie/Documents/caffe/python')
 import caffe
 import os
 import numpy as np
 import time
 
 
-model_file = '/home/zhangmingjie/deep-learning/caffe-master/examples/mnist/lenet.prototxt'
-pretrained_file = '/home/zhangmingjie/deep-learning/caffe-master/examples/mnist/lenet12/_iter_10000.caffemodel'
+model_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet.prototxt'
+pretrained_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet1/_iter_15000.caffemodel'
 net = caffe.Classifier(model_file, pretrained_file, image_dims=(28, 28), raw_scale=255)
 
 
 if __name__ == '__main__':
     start = time.time()
 
-    predict_labels_path = '/home/zhangmingjie/deep-learning/4.png'
+    predict_labels_path = '/Users/zhangmingjie/PycharmProjects/chameleon/6.png'
 
     print 'loading data...'
 
@@ -21,10 +23,11 @@ if __name__ == '__main__':
     image = predict_labels_path
     score = net.predict([caffe.io.load_image(image, color=False)], oversample=False)
     max_num = max(score[0])
+    print score[0]
     for j in range(20):
-	if score[0][j] == max_num:
-	     get = j
-	     break
+        if score[0][j] == max_num:
+             get = j
+             break
     print 'This char is '+ ': ' + str(get)
 
     #####################################################################

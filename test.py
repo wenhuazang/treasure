@@ -1,4 +1,6 @@
 # coding=utf-8
+import sys
+sys.path.append('/Users/zhangmingjie/Documents/caffe/python')
 import caffe
 import os
 import numpy as np
