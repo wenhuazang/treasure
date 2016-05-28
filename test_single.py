@@ -1,6 +1,4 @@
 # coding=utf-8
-import sys
-sys.path.append('/Users/zhangmingjie/Documents/caffe/python')
 import caffe
 import os
 import numpy as np
@@ -15,7 +13,7 @@ net = caffe.Classifier(model_file, pretrained_file, image_dims=(28, 28), raw_sca
 if __name__ == '__main__':
     start = time.time()
 
-    predict_labels_path = '/Users/zhangmingjie/PycharmProjects/chameleon/2.png'
+    predict_labels_path = '/Users/zhangmingjie/PycharmProjects/chameleon/134.png'
 
     print 'loading data...'
 
