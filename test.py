@@ -8,7 +8,7 @@ import time
 
 
 model_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet.prototxt'
-pretrained_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet1/_iter_15000.caffemodel'
+pretrained_file = '/Users/zhangmingjie/Documents/caffe/examples/mnist/lenet1/_iter_30000.caffemodel'
 net = caffe.Classifier(model_file, pretrained_file, image_dims=(28, 28), raw_scale=255)
 
 
