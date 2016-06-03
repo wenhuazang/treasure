@@ -4,10 +4,12 @@ from PIL import Image
 import os
 import pylab
 from numpy import *
+import numpy as np
+import sys
 
 BACKGROUND = 255
 NUM = 4
-adds = 60
+adds = 0
 
 def findValley(w, y):
     valley = []
@@ -71,6 +73,19 @@ def getframe(fname):
     except:
         return "File error!"
     im = im.convert('L')
+    Im = array(im)
+    mean = np.mean(Im)
+    column, row = im.size
+    for a in range(row):
+        for b in range(column):
+            if Im[a, b] < (mean - 33):
+                Im[a, b] = 0
+            else:
+                Im[a, b] = 255
+    for a in range(35):
+        for b in range(40):
+            pass
+    im = Image.fromarray(Im)
     return im
 
 def plot(img):
@@ -91,8 +106,8 @@ def plot(img):
 
 if __name__ == "__main__":
     start = time.time()
-    img_root = "TiebaChinese/"
-    img_save = "results/"
+    img_root = "upper_part_samples/"
+    img_save = "upper_segment/"
     if not os.path.exists(img_save):
         os.makedirs(img_save)
     images = os.listdir(img_root)
@@ -105,12 +120,12 @@ if __name__ == "__main__":
         i += 1
         img = getframe(img_root + name)
         regions = segment(img)
-        if not len(name.split('.')[0].decode('utf-8')) == 4:
-            sys.exit()
+        #if not len(name.split('.')[0].decode('utf-8')) == 4:
+        #    sys.exit()
         for region in regions:
-            if not os.path.exists(img_save + name.split('.')[0].decode('utf-8')[a]):
-                os.makedirs(img_save + name.split('.')[0].decode('utf-8')[a])
-            region.save(img_save + name.split('.')[0].decode('utf-8')[a] + '/' + str(4*i+a) +".png")
+            #if not os.path.exists(img_save + name.split('.')[0].decode('utf-8')[a]):
+            #    os.makedirs(img_save + name.split('.')[0].decode('utf-8')[a])
+            region.save(img_save + '/' + str(4*i+a) +".png")
             a += 1
     end = time.time()
     print "elapse: %f" % (end - start)
