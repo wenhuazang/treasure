@@ -1,9 +1,10 @@
 #!coding=utf-8
-import Image,os,time
+import os,time
+from PIL import Image
 import pylab
 BACKGROUND=255
 save_single_part = "down_segment/"
-root = "down_samples/"
+root = "down_part/"
 save_path = "horizon/"
 NUM = 3
 A = 200
@@ -18,7 +19,7 @@ def judge_point(inter_point,name):
                 inter_point.sort()
         #print "the len is: ",len(inter_point)
         #print "inter_point: ",inter_point
-        print "add point name: ",name
+        #print "add point name: ",name
         judge_point(inter_point,name)
 
 
@@ -131,10 +132,11 @@ def segment_column(region,count,name):
         # new_region = tmp_region.crop(getbox(tmp_region))
         # print name
         # new_region.show()
-        new_region.save(save_single_part + str(count) + ".jpg")
+        new_region.convert('L')
+        new_region.save(save_single_part + str(count) + ".png")
         count += 1
 
-def getframe(fname, strict=1):
+def getframe(fname):
     try:
         im = Image.open(fname)
     except:
@@ -153,6 +155,8 @@ if __name__ == "__main__":
     count = 0
     #a = 0
     for name in images:
+        if name == '.DS_Store':
+            continue
         #print "segment image:",name
         for box in boxs:
             img = getframe(root + name)
