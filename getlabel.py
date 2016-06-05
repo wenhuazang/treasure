@@ -59,7 +59,7 @@ def getlabel1(files, stop_point, root1, root2, finished_thread):
     stop_point0 = stop_point
     flag = 0
     present = '-1'
-    while not (present == files[-1].split('.')[0] or present == files[-2].split('.')[0]):
+    while not (present == files[-1] or present == files[-2]):
         for image_name in files:
             if image_name == '.DS_Store':
                 continue
@@ -74,8 +74,8 @@ def getlabel1(files, stop_point, root1, root2, finished_thread):
                         if not os.path.exists(root2 + label):
                             os.makedirs(root2 + label)
                         image.save(root2 + label + '/' + image_name)
-                        present = image_name.split('.')[0]
-                        print present + ':' + label
+                        print image_name.split('.')[0] + ':' + label
+                        present = image_name
                     except:
                         print image_name.split('.')[0] + ':' + 'connection error!'
                         stop_point0 = image_name.split('.')[0]
@@ -88,7 +88,7 @@ def getlabel2(files, stop_point, root1, root2, finished_thread):
     stop_point0 = stop_point
     flag = 0
     present = '-1'
-    while not (present == files[-1].split('.')[0] or present == files[-2].split('.')[0]):
+    while not (present == files[-1] or present == files[-2]):
         for image_name in files:
             if image_name == '.DS_Store':
                 continue
@@ -100,11 +100,11 @@ def getlabel2(files, stop_point, root1, root2, finished_thread):
                     image = Image.open(root1 + image_name)
                     try:
                         label = rc.rk_create(im, 4010)['Result']
-                        present = image_name.split('.')[0]
-                        print present + ':' + label
                         if not os.path.exists(root2 + label):
                             os.makedirs(root2 + label)
                         image.save(root2 + label + '/' + image_name)
+                        print image_name.split('.')[0] + ':' + label
+                        present = image_name
                     except:
                         print image_name.split('.')[0] + ':' + 'connection error!'
                         stop_point0 = image_name.split('.')[0]
