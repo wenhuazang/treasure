@@ -9,6 +9,7 @@ from PIL import Image
 import numpy as np
 from numpy import *
 import thread
+import time
 
 
 class RClient(object):
@@ -139,4 +140,5 @@ if __name__ == '__main__':
     except:
         print "Error: unable to start thread"
     while finished_thread[0] < 4:
+        time.sleep(5)
         pass

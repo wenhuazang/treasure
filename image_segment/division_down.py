@@ -4,8 +4,8 @@ from PIL import Image
 import pylab
 
 BACKGROUND = 255
-save_single_part = "down_segment/"
-root = "down_part/"
+save_single_part = "image_segment/down_segment/"
+root = "image_segment/down_part/"
 save_path = "horizon/"
 NUM = 3
 A = 200
@@ -21,7 +21,7 @@ def judge_point(inter_point, name):
                 inter_point.sort()
         # print "the len is: ",len(inter_point)
         # print "inter_point: ",inter_point
-        print "add point name: ", name
+        # "add point name: ", name
         judge_point(inter_point, name)
 
 
@@ -53,10 +53,10 @@ def findValley(w, y):
     num = [37, 58, 80]
     for x in range(len(num)):
         for i in range(num[x] - 2, num[x] + 3):
-            if (y[i + 1] >= y[i] and y[i - 1] >= y[i]):
+            if y[i + 1] >= y[i] and y[i - 1] >= y[i]:
                 valley.append(i + 1)
                 break
-        if (len(valley) != x + 1):
+        if len(valley) != x + 1:
             valley.append(num[x])
     return valley
 
@@ -87,7 +87,7 @@ def segment_column(region, count, name):
     inter_point = []
     # print "len of X:",len(X)
     i = 12
-    while i < len(X) - 10:
+    while len(X) - 10 > i:
         if (X[i + 1] - X[i] > 8) and (X[i] != X[i + 1] - 1):
             # print i
             inter_point.append(X[i] + 4)
@@ -109,7 +109,7 @@ def segment_column(region, count, name):
     judge_point(inter_point, name)
 
     for i in range(len(inter_point) - 1):
-        if (inter_point[i + 1] - inter_point[i] > 35):
+        if inter_point[i + 1] - inter_point[i] > 35:
             # print "the width too long name: ",name
             except_width.append(name)
     # print inter_point
