@@ -140,5 +140,5 @@ if __name__ == '__main__':
     except:
         print "Error: unable to start thread"
     while finished_thread[0] < 4:
-        time.sleep(5)
+        time.sleep(10)
         pass
