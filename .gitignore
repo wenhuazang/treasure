@@ -1,4 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
 /Create_Chinese_Character/__init__.py
+/For_Caffe/__init__.py
+/Online_Auto_Recognize/__init__.py
 *.pyc
