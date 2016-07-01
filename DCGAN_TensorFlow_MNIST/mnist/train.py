@@ -104,6 +104,6 @@ for epoch in range(n_epochs):
                 })
             generated_samples = (generated_samples + 1.) / 2.
             save_visualization(generated_samples, (14, 14),
-                               save_path='./vis_code2/sample_' + str(iterations / 100) + '.jpg')
+                               save_path='./vis_code/sample_' + str(iterations / 100) + '.jpg')
 
         iterations += 1
