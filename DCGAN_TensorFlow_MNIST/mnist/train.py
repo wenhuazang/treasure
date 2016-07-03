@@ -7,7 +7,7 @@ from util import *
 from load import mnist_with_valid_set
 
 n_epochs = 10000
-learning_rate = 0.001
+learning_rate = 0.0001
 batch_size = 128
 image_shape = [28, 28, 1]
 dim_z = 100
